@@ -10,18 +10,21 @@ namespace EmployeeManagementSystem.Web.Controllers
     {
         private readonly IEmployeeService _employeeService;
         private readonly string _logPath;
+        private readonly IWebHostEnvironment _env;
 
-        public EmployeesController(IEmployeeService employeeService)
+
+        public EmployeesController(IEmployeeService employeeService, IWebHostEnvironment env)
         {
             _employeeService = employeeService;
 
-            // Set up logging path in the project root
             _logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs", "employee_api_logs.txt");
 
             if (!Directory.Exists(Path.GetDirectoryName(_logPath)))
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(_logPath)!);
             }
+
+            _env = env;
         }
 
         [HttpGet]
@@ -134,10 +137,41 @@ namespace EmployeeManagementSystem.Web.Controllers
             }
         }
 
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadPhoto(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("No file provided.");
+
+            var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp", "image/gif" };
+            if (!allowedTypes.Contains(file.ContentType.ToLower()))
+                return BadRequest("Only image files are allowed.");
+
+            if (file.Length > 5 * 1024 * 1024)
+                return BadRequest("File size must be under 5MB.");
+
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
+            Directory.CreateDirectory(uploadsFolder); // ensure folder exists
+
+            var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            var fileName = $"{Guid.NewGuid()}{extension}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var url = $"{Request.Scheme}://{Request.Host}/uploads/{fileName}";
+            return Ok(new { url });
+        }
+
         private void LogToFile(string action, string message)
         {
             var logEntry = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} | [{action}] | {message}{Environment.NewLine}";
             System.IO.File.AppendAllText(_logPath, logEntry);
         }
+
+        
     }
 }

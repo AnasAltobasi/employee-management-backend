@@ -49,6 +49,7 @@ app.MapGet("/", context => {
     return Task.CompletedTask;
 });
 
+app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
