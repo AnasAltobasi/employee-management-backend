@@ -1,7 +1,8 @@
-using EmployeeManagementSystem.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using EmployeeManagementSystem.Application.Interfaces;
+using EmployeeManagementSystem.Infrastructure;
+using EmployeeManagementSystem.Infrastructure.Middlewares;
 using EmployeeManagementSystem.Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseCors("AllowOrigin");
 
 if (app.Environment.IsDevelopment())
