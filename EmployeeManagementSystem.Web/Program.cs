@@ -5,6 +5,17 @@ using EmployeeManagementSystem.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowOrigin",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -13,12 +24,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
-builder.Services.AddControllers(); 
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors("AllowOrigin");
 
 if (app.Environment.IsDevelopment())
 {
@@ -32,12 +45,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGet("/", context => {
-    context.Response.Redirect("/index.html"); 
+    context.Response.Redirect("/index.html");
     return Task.CompletedTask;
 });
 
 app.UseHttpsRedirection();
-
 app.MapControllers();
-
 app.Run();
