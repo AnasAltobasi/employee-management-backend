@@ -150,8 +150,8 @@ namespace EmployeeManagementSystem.Web.Controllers
             if (file.Length > 5 * 1024 * 1024)
                 return BadRequest("File size must be under 5MB.");
 
-            var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads");
-            Directory.CreateDirectory(uploadsFolder); // ensure folder exists
+            var uploadsFolder = Path.Combine(_env.WebRootPath, "employeeUploadedPhotos");
+            Directory.CreateDirectory(uploadsFolder);
 
             var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
             var fileName = $"{Guid.NewGuid()}{extension}";
