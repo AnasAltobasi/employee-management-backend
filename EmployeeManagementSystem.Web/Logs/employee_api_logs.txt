@@ -189,3 +189,38 @@
 2026-03-06 04:17:07 | [GET BY ID] | Response: Success
 2026-03-06 04:17:09 | [GET ALL] | Request: Page=1, Size=10
 2026-03-06 04:17:09 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:20:40 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:20:41 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:20:45 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:20:45 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:20:46 | [GET BY ID] | Request: ID=59bc9f67-09cb-4687-85a2-da06e1b6d1e4
+2026-03-06 04:20:46 | [GET BY ID] | Response: Success
+2026-03-06 04:20:55 | [PUT] | Updated ID: 59bc9f67-09cb-4687-85a2-da06e1b6d1e4
+2026-03-06 04:20:55 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:20:55 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:20:57 | [GET BY ID] | Request: ID=59bc9f67-09cb-4687-85a2-da06e1b6d1e4
+2026-03-06 04:20:57 | [GET BY ID] | Response: Success
+2026-03-06 04:21:36 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:21:36 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:21:38 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:21:38 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:21:59 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:21:59 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:22:01 | [GET BY ID] | Request: ID=7d194df6-d62b-4b27-a8d3-dda26359bf49
+2026-03-06 04:22:01 | [GET BY ID] | Response: Success
+2026-03-06 04:22:03 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:22:03 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:22:05 | [GET ALL] | Request: Page=2, Size=10
+2026-03-06 04:22:05 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:22:07 | [GET BY ID] | Request: ID=4751569e-31f0-479d-b88e-922411d3c71f
+2026-03-06 04:22:07 | [GET BY ID] | Response: Success
+2026-03-06 04:22:08 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:22:08 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:26:47 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:26:47 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:26:48 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:26:48 | [GET ALL] | Response: Success - Returned paged data
+2026-03-06 04:27:02 | [DELETE] | Request: ID=54a3f494-a525-4e8e-a81e-17fddd69f9dc
+2026-03-06 04:27:02 | [DELETE] | Response: Success
+2026-03-06 04:27:02 | [GET ALL] | Request: Page=1, Size=10
+2026-03-06 04:27:02 | [GET ALL] | Response: Success - Returned paged data
